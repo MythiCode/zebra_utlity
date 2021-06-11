@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disconnect">Disconnected</string>
+    <string name="connected">Connected</string>
+    <string name="connecting">Connecting</string>
+    <string name="disconnecting">Disconnecting</string>
+    <string name="done">Done</string>
+
+
+    <string name="disconnectColor">R</string>
+    <string name="connectedColor">G</string>
+    <string name="connectingColor">Y</string>
+    <string name="sending_data">Sending Data</string>
+
+</resources>
