@@ -507,6 +507,7 @@ public class Printer implements MethodChannel.MethodCallHandler {
             public void run() {
                 System.out.println("Printer set status: " + message);
                 HashMap<String, Object> arguments = new HashMap<>();
+                arguments.put("Address", getMacAddress());
                 arguments.put("Status", message);
                 arguments.put("Color", color + "");
                 methodChannel.invokeMethod("changePrinterStatus", arguments);

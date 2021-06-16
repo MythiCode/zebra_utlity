@@ -14,8 +14,8 @@ class ZebraPrinter {
 
   bool isRotated = false;
 
-  ZebraPrinter(String id, this.onPrinterFound, this.onPrinterDiscoveryDone,
-      this.onDiscoveryError, this.onChangePrinterStatus,
+  ZebraPrinter(
+      String id, this.onPrinterFound, this.onPrinterDiscoveryDone, this.onDiscoveryError, this.onChangePrinterStatus,
       {this.onPermissionDenied}) {
     channel = MethodChannel('ZebraPrinterObject' + id);
     channel.setMethodCallHandler(nativeMethodCallHandler);
@@ -112,18 +112,15 @@ class ZebraPrinter {
 
   Future<dynamic> nativeMethodCallHandler(MethodCall methodCall) async {
     if (methodCall.method == "printerFound") {
-      onPrinterFound!(
-          methodCall.arguments["Name"],
-          methodCall.arguments["Address"],
+      onPrinterFound!(methodCall.arguments["Name"], methodCall.arguments["Address"],
           methodCall.arguments["IsWifi"].toString() == "true" ? true : false);
     } else if (methodCall.method == "changePrinterStatus") {
       onChangePrinterStatus!(
-          methodCall.arguments["Status"], methodCall.arguments["Color"]);
+          methodCall.arguments["Address"], methodCall.arguments["Status"], methodCall.arguments["Color"]);
     } else if (methodCall.method == "onPrinterDiscoveryDone") {
       onPrinterDiscoveryDone!();
     } else if (methodCall.method == "onDiscoveryError") {
-      onDiscoveryError!(methodCall.arguments["ErrorCode"]
-          , methodCall.arguments["ErrorText"]);
+      onDiscoveryError!(methodCall.arguments["ErrorCode"], methodCall.arguments["ErrorText"]);
     }
     return null;
   }
