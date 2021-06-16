@@ -8,7 +8,7 @@ class Zebrautility {
       {Function(String name, String ipAddress, bool isWifi)? onPrinterFound,
       onPrinterDiscoveryDone,
       Function(int errorCode, String errorText)? onDiscoveryError,
-      Function(String status, String color)? onChangePrinterStatus,
+      Function(String address, String status, String color)? onChangePrinterStatus,
       onPermissionDenied}) async {
     String id = await (_channel.invokeMethod("getInstance"));
     ZebraPrinter printer = ZebraPrinter(
