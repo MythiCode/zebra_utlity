@@ -19,7 +19,7 @@ public class SwiftZebrautilityPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
 
     if(call.method == "getInstance"){
-        var printer = Printer.getInsatnce(binaryMessenger: self.binaryMessenger!)
+        var printer = Printer.getInstance(binaryMessenger: self.binaryMessenger!)
         printers.append(printer)
         result(printer.toString())
         

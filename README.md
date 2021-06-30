@@ -29,7 +29,7 @@ android {
 ```
 ## iOS
 Add `Supported external accessory protocols` in your `info.plist` and then add `com.zebra.rawport`to its.
-
+Add `Privacy - Local Network Usage Description` in your `info.plist`.
 # Example
 ## Getting Started
 for initial new object of printer use this.

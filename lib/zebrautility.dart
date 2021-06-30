@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 import 'package:zebrautility/ZebraPrinter.dart';
 
@@ -11,7 +13,7 @@ class Zebrautility {
       Function(String status, String color)? onChangePrinterStatus,
       onPermissionDenied}) async {
     String id =
-        await (_channel.invokeMethod("getInstance") as FutureOr<String>);
+        await _channel.invokeMethod("getInstance");
     ZebraPrinter printer = ZebraPrinter(id, onPrinterFound,
         onPrinterDiscoveryDone, onDiscoveryError, onChangePrinterStatus,
         onPermissionDenied: onPermissionDenied);

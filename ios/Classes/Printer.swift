@@ -29,13 +29,21 @@ class Printer{
     var wifiManager: POSWIFIManager?
     var isConnecting :Bool = false
     
-    static func getInsatnce(binaryMessenger : FlutterBinaryMessenger) -> Printer {
+    static func getInstance(binaryMessenger : FlutterBinaryMessenger) -> Printer {
         let printer = Printer()
         printer.setMethodChannel(binaryMessenger: binaryMessenger)
         return printer
     }
-    
+
+    //Send dummy to get user permission for local network
+    func dummyConnect(){
+        var connection = TcpPrinterConnection(address: "0.0.0.0", andWithPort: 9100)
+        connection?.open()
+        connection?.close()
+    }
+
     func discoveryPrinters(){
+      dummyConnect()
       print("Message from ios: starting for discovering printers")
       let manager = EAAccessoryManager.shared()
         
