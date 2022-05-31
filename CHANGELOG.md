@@ -1,3 +1,6 @@
+## 0.0.39
+Updated native code
+
 ## 0.0.38
 Fix bug in getting instance
 Improve performance for request local network

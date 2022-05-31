@@ -603,11 +603,11 @@ public class Printer implements MethodChannel.MethodCallHandler {
     @Override
     public void onMethodCall(@NonNull final MethodCall call, @NonNull final MethodChannel.Result result) {
         if (call.method.equals("print")) {
-            print(String.valueOf(call.argument("Data")));
+            print(call.argument("Data").toString());
         } else if (call.method.equals("checkPermission")) {
             checkPermission(context, result);
         } else if (call.method.equals("convertBase64ImageToZPLString")) {
-            convertBase64ImageToZPLString(String.valueOf(call.argument("data"))
+            convertBase64ImageToZPLString(call.argument("Data").toString())
                     , Integer.valueOf(call.argument("rotation").toString()), result);
         } else if (call.method.equals("disconnect")) {
             new Thread(new Runnable() {
@@ -640,7 +640,7 @@ public class Printer implements MethodChannel.MethodCallHandler {
                 @Override
                 public void run() {
                     final boolean r = false;
-                    connectToSelectPrinter(String.valueOf(call.argument("Address")));
+                    connectToSelectPrinter(call.argument("Address").toString());
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -652,7 +652,7 @@ public class Printer implements MethodChannel.MethodCallHandler {
             }).start();
 
         } else if (call.method.equals(("connectToGenericPrinter"))) {
-            connectToGenericPrinter(String.valueOf(call.argument("Address")));
+            connectToGenericPrinter(call.argument("Address").toString());
         } else {
             result.notImplemented();
         }
